@@ -241,11 +241,61 @@ async function ensureSeedFile(dataFile) {
   try {
     await fs.access(dataFile);
   } catch {
-    await fs.writeFile(dataFile, JSON.stringify(createSeedData(), null, 2), "utf8");
+    const tempFile = `${dataFile}.${crypto.randomUUID()}.tmp`;
+    await fs.writeFile(tempFile, JSON.stringify(createSeedData(), null, 2), "utf8");
+
+    try {
+      await fs.rename(tempFile, dataFile);
+    } catch (error) {
+      await fs.rm(tempFile, { force: true });
+
+      if (error.code !== "EEXIST") {
+        throw error;
+      }
+    }
   }
 }
 
-function createStore(dataFile) {
+function cloneData(value) {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  return JSON.parse(JSON.stringify(value));
+}
+
+function createMemoryStore(seedData = createSeedData()) {
+  let data = cloneData(seedData);
+  let writeQueue = Promise.resolve();
+
+  async function read() {
+    return cloneData(data);
+  }
+
+  function update(mutator) {
+    const next = writeQueue.then(async () => {
+      const workingCopy = cloneData(data);
+      const result = await mutator(workingCopy);
+      data = workingCopy;
+      return cloneData(result);
+    });
+
+    writeQueue = next.catch(() => {});
+    return next;
+  }
+
+  return {
+    read,
+    update,
+    dataFile: "memory://bottleapp-store",
+  };
+}
+
+function createStore(dataFile, options = {}) {
+  if (options.mode === "memory") {
+    return createMemoryStore(options.seedData);
+  }
+
   let writeQueue = Promise.resolve();
 
   async function read() {
@@ -802,6 +852,7 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_DATA_FILE,
+  createMemoryStore,
   createRequestHandler,
   createStore,
   createSeedData,
