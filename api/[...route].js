@@ -43,4 +43,3 @@ async function apiHandler(req, res) {
 }
 
 module.exports = apiHandler;
-module.exports.default = apiHandler;
