@@ -6,11 +6,11 @@ const {
 
 let requestHandlerPromise;
 
-async function getRequestHandler() {
+function getRequestHandler() {
   if (!requestHandlerPromise) {
     requestHandlerPromise = Promise.resolve().then(() => {
       const store = createStore(resolveDataFile(), {
-        mode: process.env.VERCEL ? "memory" : "file",
+        mode: "memory",
       });
 
       return createRequestHandler(store);
