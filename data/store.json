@@ -1,0 +1,112 @@
+{
+  "users": [
+    {
+      "id": "user_demo",
+      "username": "demo",
+      "fullName": "Nina Shopper",
+      "role": "user",
+      "salt": "26df55d9-051c-43d6-808a-b5d37b4bfb52",
+      "passwordHash": "f862affef9098883222278a7567a79529310238c470c8729709dfe3185547c50"
+    },
+    {
+      "id": "user_member",
+      "username": "member",
+      "fullName": "Pond Retail",
+      "role": "user",
+      "salt": "053d1466-b9d7-4a1c-adfa-81b8df2a0041",
+      "passwordHash": "2350ceca2c94be9d7f4907cf63548b7e50982bf0747894041709df31853f2dc0"
+    },
+    {
+      "id": "admin_root",
+      "username": "admin",
+      "fullName": "Store Admin",
+      "role": "admin",
+      "salt": "99b930a9-0484-4357-b0fc-6bf375695f3c",
+      "passwordHash": "a923fc30a7b4d9b914c5f122a734cf98006645b7ef40ee937e761114b6c7899e"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_aero_flask",
+      "name": "Aero Flask 650ml",
+      "category": "Outdoor",
+      "price": 490,
+      "stock": 18,
+      "tone": "ember",
+      "featured": true,
+      "description": "ขวดน้ำสเตนเลสเก็บเย็น เหมาะกับวันทำงานและออกทริป"
+    },
+    {
+      "id": "prod_studio_tumbler",
+      "name": "Studio Tumbler 420ml",
+      "category": "Office",
+      "price": 350,
+      "stock": 25,
+      "tone": "lagoon",
+      "featured": true,
+      "description": "แก้วพกพาทรงเรียบสำหรับโต๊ะทำงานและร้านกาแฟ"
+    },
+    {
+      "id": "prod_kids_splash",
+      "name": "Kids Splash Bottle",
+      "category": "Family",
+      "price": 290,
+      "stock": 12,
+      "tone": "berry",
+      "featured": false,
+      "description": "ขวดน้ำเด็กน้ำหนักเบา เปิดง่าย พร้อมสายคล้อง"
+    },
+    {
+      "id": "prod_cold_brew",
+      "name": "Cold Brew Canister",
+      "category": "Kitchen",
+      "price": 560,
+      "stock": 9,
+      "tone": "cobalt",
+      "featured": false,
+      "description": "ภาชนะชงชาและกาแฟเย็นแบบกรองในตัว สำหรับใช้งานในบ้าน"
+    },
+    {
+      "id": "prod_trail_thermos",
+      "name": "Trail Thermos 900ml",
+      "category": "Travel",
+      "price": 690,
+      "stock": 7,
+      "tone": "mint",
+      "featured": true,
+      "description": "กระติกเก็บร้อนเก็บเย็นขนาดใหญ่ สำหรับเดินทางไกล"
+    },
+    {
+      "id": "prod_glass_bottle",
+      "name": "Minimal Glass Bottle",
+      "category": "Lifestyle",
+      "price": 410,
+      "stock": 16,
+      "tone": "sand",
+      "featured": false,
+      "description": "ขวดแก้วลุคมินิมอล พร้อมปลอกซิลิโคนกันลื่น"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order_seed_001",
+      "userId": "user_demo",
+      "customerName": "Nina Shopper",
+      "phone": "0812345678",
+      "address": "88 ถนนสุขุมวิท กรุงเทพฯ 10110",
+      "note": "ฝากส่งช่วงบ่าย",
+      "status": "shipped",
+      "createdAt": "2026-04-18T10:30:00.000Z",
+      "updatedAt": "2026-04-19T05:45:00.000Z",
+      "total": 980,
+      "items": [
+        {
+          "productId": "prod_aero_flask",
+          "name": "Aero Flask 650ml",
+          "quantity": 2,
+          "price": 490
+        }
+      ]
+    }
+  ]
+}

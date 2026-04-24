@@ -1,0 +1,10 @@
+{
+  "name": "bottleapp-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free storefront app with user and admin dashboards",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/smoke-test.js"
+  }
+}
